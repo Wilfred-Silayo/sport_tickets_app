@@ -119,7 +119,10 @@ class AuthController extends StateNotifier<bool> {
     final res = await _authAPI.logout();
     state = false;
     res.fold(
-      (l) => null,
+      (l) {
+        print(l.message);
+        showSnackBar(context, l.message);
+      },
       (r) {
         Navigator.pushAndRemoveUntil(
           context,

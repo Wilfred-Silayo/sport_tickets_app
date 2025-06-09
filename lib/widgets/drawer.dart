@@ -6,7 +6,6 @@ import 'package:sports_ticketing/pages/security.dart';
 import 'package:sports_ticketing/pages/tickets.dart';
 import 'package:sports_ticketing/providers/auth_provider.dart';
 import 'package:sports_ticketing/widgets/circular_avator.dart';
-import 'package:sports_ticketing/widgets/dialog.dart';
 import '../pages/loading_page.dart';
 
 class DrawerWidget extends ConsumerStatefulWidget {
@@ -115,20 +114,7 @@ class _DrawerWidgetState extends ConsumerState<DrawerWidget> {
                     style: TextStyle(fontSize: 18),
                   ),
                   onTap: () async {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return CustomDialog(
-                          title: 'Logout',
-                          content: 'Are you sure you want to logout?',
-                          onConfirm: () {
-                            ref
-                                .read(authControllerProvider.notifier)
-                                .logout(context);
-                          },
-                        );
-                      },
-                    );
+                    ref.read(authControllerProvider.notifier).logout(context);
                   },
                 ),
               ],
